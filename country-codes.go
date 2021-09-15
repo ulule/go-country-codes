@@ -1,8 +1,10 @@
 package countrycodes
 
 import (
-	"github.com/tchap/go-patricia/patricia"
+	"sort"
 	"strings"
+
+	"github.com/tchap/go-patricia/patricia"
 )
 
 type Assignment int
@@ -66,6 +68,8 @@ type CountryCode struct {
 	DialingCode string
 	Assignment  Assignment
 }
+
+var AllAlpha2 []string
 
 var by_alpha2 map[string]CountryCode
 
@@ -3857,6 +3861,9 @@ func init() {
 		by_name[cc.Name] = cc
 		by_numeric[cc.Numeric] = cc
 		name_trie.Insert(patricia.Prefix(strings.ToLower(cc.Name)), cc)
+
+		AllAlpha2 = append(AllAlpha2, cc.Alpha2)
+		sort.Strings(AllAlpha2)
 	}
 }
 
