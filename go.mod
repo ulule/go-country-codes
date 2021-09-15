@@ -1,4 +1,4 @@
-module github.com/launchdarkly/go-country-codes
+module github.com/ulule/go-country-codes
 
 go 1.17
 
